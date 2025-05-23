@@ -1,0 +1,7 @@
+replicaCount:
+
+properties:
+  port:
+  image:
+    tag:
+    version:
