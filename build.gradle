@@ -39,4 +39,4 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-tasks.bootJar.archiveFileName = 'shop-api-gateway.jar'
+tasks.bootJar.archiveFileName = 'eureka-server.jar'
