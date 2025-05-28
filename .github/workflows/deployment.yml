@@ -46,10 +46,16 @@ jobs:
           name: eureka-app
           path: build/libs/*.jar
 
-  login-to-registry:
+  docker-build-push:
     needs: build-jar
     runs-on: ubuntu-latest
     steps:
+      - name: Download JAR artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: eureka-app
+          path: build/libs/
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -68,7 +74,7 @@ jobs:
           tags: ${{ secrets.REGISTRY_URI }}/shop-registry/${{ github.repository }}:${{ github.sha }}
 
   deploy:
-    needs: login-to-registry
+    needs: docker-build-push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
