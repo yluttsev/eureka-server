@@ -50,14 +50,14 @@ jobs:
     needs: build-jar
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
           name: eureka-app
           path: build/libs/
-
-      - name: Checkout code
-        uses: actions/checkout@v4
 
       - name: Login to Registry
         uses: docker/login-action@v3
