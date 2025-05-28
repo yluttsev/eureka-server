@@ -61,23 +61,23 @@ jobs:
           push: true
           tags: ${{ secrets.REGISTRY_URI }}/shop-registry/${{ github.repository }}:${{ github.sha }}
 
-deploy:
-  needs: login-to-registry
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+  deploy:
+    needs: login-to-registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup kubectl
-      uses: Azure/setup-kubectl@v4
+      - name: Setup kubectl
+        uses: Azure/setup-kubectl@v4
 
-    - name: Setup Helm
-      uses: Azure/setup-helm@v3
+      - name: Setup Helm
+        uses: Azure/setup-helm@v3
 
-    - name: Setup kubeconfig
-      run: |
+      - name: Setup kubeconfig
+        run: |
           echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
 
-    - name: Helm upgrade
-      run: |
+      - name: Helm upgrade
+        run: |
           helm upgrade --install my-release ./eureka-server --namespace eureka-server --set properties.image.name=${{ github.repository }} --set properties.image.tag=${{ github.sha }}
