@@ -1,7 +1,7 @@
-replicaCount:
+replicaCount: 1
 
 properties:
-  port:
+  port: 8761
   image:
     tag:
     version:
