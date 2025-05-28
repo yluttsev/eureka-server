@@ -5,7 +5,7 @@ metadata:
   labels:
     app: "{{ .Chart.Name }}"
 spec:
-  replicas: "{{ .Values.replicaCount }}"
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: "{{ .Chart.Name }}"
@@ -19,6 +19,6 @@ spec:
         - name: "{{ .Chart.Name }}"
           image: "{{ .Values.properties.image.name }}:{{ .Values.properties.image.tag }}"
           ports:
-            - containerPort: "{{ .Values.properties.port }}"
+            - containerPort: {{ .Values.properties.port }}
               protocol: TCP
       restartPolicy: Always
