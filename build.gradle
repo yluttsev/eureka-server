@@ -38,3 +38,5 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+tasks.bootJar.archiveFileName = 'shop-api-gateway.jar'
