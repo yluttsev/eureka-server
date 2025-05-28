@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: "{{ .Chart.Name }}"
-          image: "{{ .Values.properties.image.tag }}:{{ .Values.properties.image.version }}"
+          image: "{{ .Values.properties.image.name }}:{{ .Values.properties.image.tag }}"
           ports:
             - containerPort: "{{ .Values.properties.port }}"
               protocol: TCP

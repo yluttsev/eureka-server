@@ -3,5 +3,5 @@ replicaCount: 1
 properties:
   port: 8761
   image:
+    name:
     tag:
-    version:
